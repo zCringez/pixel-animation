@@ -1,16 +1,14 @@
 const canvas = document.querySelector("#canvas")
 const ctx = canvas.getContext("2d")
+const img = document.querySelector("#character")
 
 let x = 0
-let y = 200
+let y = 0
 
 function animationLoop () {
-    ctx.clearRect(0, 0, 640, 480)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    ctx.beginPath()
-    ctx.fillStyle = "red"
-    ctx.rect(x++, y, 50, 50)
-    ctx.fill()
+    ctx.drawImage(img, x, y, canvas.width, canvas.height)
 
     window.requestAnimationFrame(animationLoop)
 }
