@@ -15,7 +15,27 @@ function animationLoop () {
 }
 
 function main() {
+    readMapFile("map.txt")
     window.requestAnimationFrame(animationLoop)
+}
+
+function drawMapTile(x, y, tileType) {
+    console.log(x, y, tileType)
+    // Implementiere Kachelzeichnen hier!!!
+}
+
+function readMapFile(filename) {
+    fetch(filename).then((res) => res.text()).then((data) => {
+        let rows = data.split("\n")
+        for (let y = 0; y < rows.length; y++) {
+            let cells = rows[y].split("")
+            for (let x = 0; x < cells.length; x++) {
+                
+                drawMapTile(x, y, cells[x])
+
+            }
+        }
+    })
 }
 
 main()
