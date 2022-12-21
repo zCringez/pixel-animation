@@ -1,4 +1,7 @@
+const tileSize = 32
 const canvas = document.querySelector("#canvas")
+canvas.width = 10 * tileSize
+canvas.height = 15 * tileSize
 const ctx = canvas.getContext("2d")
 ctx.imageSmoothingEnabled = false
 const img = document.querySelector("#character")
@@ -16,12 +19,24 @@ function animationLoop () {
 
 function main() {
     readMapFile("map.txt")
-    window.requestAnimationFrame(animationLoop)
 }
 
-function drawMapTile(x, y, tileType) {
-    console.log(x, y, tileType)
-    // Implementiere Kachelzeichnen hier!!!
+function pickMapTile(x, y, tileType) {
+    // draw Background tile first
+    drawTileOnMap(0, 0, x, y)
+
+    // Implementiere die Logik für das auswählen der Kachel
+    if (tileType === ".")      { /* do nothing */ } 
+    else if (tileType === "s") { drawTileOnMap(1, 0, x, y) }
+    else if (tileType === "p") { drawTileOnMap(2, 0, x, y) }
+    else if (tileType === "f") { drawTileOnMap(3, 0, x, y) }
+
+}
+
+function drawTileOnMap(xTilePos, yTilePos, xPos, yPos) {
+    ctx.drawImage(img,
+        xTilePos * tileSize, yTilePos * tileSize, tileSize, tileSize,
+        xPos*tileSize, yPos*tileSize, tileSize, tileSize)
 }
 
 function readMapFile(filename) {
@@ -31,7 +46,7 @@ function readMapFile(filename) {
             let cells = rows[y].split("")
             for (let x = 0; x < cells.length; x++) {
                 
-                drawMapTile(x, y, cells[x])
+                pickMapTile(x, y, cells[x])
 
             }
         }
