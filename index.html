@@ -1,19 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Animation</title>
+<html>
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+<head>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/x-icon" href="resources/logo.ico">
+
 </head>
+
 <body>
-    <h1>Pixel Animation</h1>
-    <canvas id="canvas" width="96" height="132"></canvas>
-    <div style="display:none;">
-        <img id="character" src="chars.png" width="96" height="132" />
+
+    <div id="wrapper">
+        <div id="left-div">
+            <img src="resources/logo.png" id="logo">
+            <hr>
+
+            <div id="score-div">
+                <label> Score: </label>
+                <label id="score"></label>
+            </div>
+            <div id="lines-div">
+                <label> Lines: </label>
+                <label id="lines"></label>
+            </div>
+        </div>
+        <div id="game-container">
+            <img src="resources/background.png" id="background">
+            <canvas id="game-canvas"></canvas>
+        </div>
     </div>
 </body>
+
+<script src="index.js"></script>
+
 </html>
